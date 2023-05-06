@@ -32,7 +32,7 @@
                     <i class="fas fa-shipping-fast icons"></i><span>Отгружено</span>
                 </a>
             </li>
-            <li th:if="${role == 'MANAGER'}" class="nav-item">
+            <li th:if="${role == 'MANAGER' or role == 'EMPLOYEE'}" class="nav-item">
                 <a class="nav-link" href="/product">
                     <i class="fas fa-table icons"></i><span>Медоборудования</span>
                 </a>

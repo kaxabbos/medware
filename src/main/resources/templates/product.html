@@ -22,8 +22,8 @@
                     </div>
                 </div>
                 <hr>
-                <h5 class="text-dark mb-4">Добавить</h5>
-                <div class="row mb-5px">
+                <h5 th:if="${role == 'MANAGER'}" class="text-dark mb-4">Добавить</h5>
+                <div th:if="${role == 'MANAGER'}" class="row mb-5px">
                     <div class="col d-lg-flex justify-content-lg-center align-items-lg-center">
                         <label class="col-form-label text-center text-dark" for="name">
                             <strong>Наименование</strong>
@@ -41,7 +41,7 @@
                     </div>
                     <div class="col d-lg-flex justify-content-lg-center align-items-lg-center mxw-100px"></div>
                 </div>
-                <form action="/product/add" method="post" class="mb-20px">
+                <form th:if="${role == 'MANAGER'}" action="/product/add" method="post" class="mb-20px">
                     <div class="row">
                         <div class="col d-lg-flex justify-content-lg-center align-items-lg-center">
                             <input class="form-control" type="text" name="name" id="name" required>
@@ -57,7 +57,7 @@
                         </div>
                     </div>
                 </form>
-                <hr>
+                <hr th:if="${role == 'MANAGER'}">
                 <div class="row mb-5px black">
                     <div class="col d-lg-flex justify-content-lg-start align-items-lg-start">
                         <span class="justify-content-lg-start">Текущий остаток:&nbsp;</span>
@@ -65,7 +65,7 @@
                     </div>
                 </div>
                 <hr>
-                <h5 class="text-dark mb-4">Редактировать</h5>
+                <h5 class="text-dark mb-4" th:if="${role == 'MANAGER'}">Редактировать</h5>
                 <div class="row mb-5px">
                     <div class="col d-lg-flex justify-content-lg-center align-items-lg-center">
                         <label class="col-form-label text-center text-dark">
@@ -82,8 +82,8 @@
                             <strong>Цена за единицу</strong>
                         </label>
                     </div>
-                    <div class="col d-lg-flex justify-content-lg-center align-items-lg-center mxw-100px"></div>
-                    <div class="col d-lg-flex justify-content-lg-center align-items-lg-center mxw-90px"></div>
+                    <div class="col d-lg-flex justify-content-lg-center align-items-lg-center mxw-100px" th:if="${role == 'MANAGER'}"></div>
+                    <div class="col d-lg-flex justify-content-lg-center align-items-lg-center mxw-90px" th:if="${role == 'MANAGER'}"></div>
                 </div>
                 <div th:each="product : ${products}" class="row mb-5px">
                     <div class="col">
@@ -100,7 +100,7 @@
                                     <input th:value="${product.unitPrice}" class="form-control" type="number" min="1"
                                            name="unitPrice" required>
                                 </div>
-                                <div class="col d-lg-flex justify-content-lg-center align-items-lg-center mxw-100px">
+                                <div th:if="${role == 'MANAGER'}" class="col d-lg-flex justify-content-lg-center align-items-lg-center mxw-100px">
                                     <button class="btn btn-outline-primary btn-sm fs-16px" type="submit">
                                         Изменить
                                     </button>
@@ -108,7 +108,7 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col d-lg-flex justify-content-lg-center align-items-lg-center mxw-90px">
+                    <div th:if="${role == 'MANAGER'}" class="col d-lg-flex justify-content-lg-center align-items-lg-center mxw-90px">
                         <a th:href="'/product/' + ${product.id} + '/delete'" class="btn btn-outline-danger btn-sm fs-16px">Удалить</a>
                     </div>
                 </div>

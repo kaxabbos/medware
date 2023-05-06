@@ -48,60 +48,32 @@
                                         <p class="text-dark m-0 fw-bold">Настройки профиля</p>
                                     </div>
                                     <div class="card-body">
-                                        <form action="/user/edit" method="post">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <label class="col-form-label text-dark" for="fio">
-                                                        <strong>ФИО</strong>
-                                                    </label>
-                                                </div>
-                                            </div>
+                                        <form class="mb-3" action="/user/edit" method="post">
                                             <div class="row">
                                                 <div class="col">
                                                     <input th:value="${user.fio}"
-                                                           class="form-control" type="text" id="fio" placeholder="ФИО"
+                                                           class="form-control" type="text" placeholder="ФИО"
                                                            name="fio">
                                                 </div>
+                                                <div class="col-auto">
+                                                    <button class="btn btn-outline-primary" type="submit">
+                                                        Изменить ФИО
+                                                    </button>
+                                                </div>
                                             </div>
+                                        </form>
+                                        <form action="/user/edit/password" method="post">
                                             <div class="row">
                                                 <div class="col">
-                                                    <label class="col-form-label text-dark justify-content-lg-center align-items-lg-center"
-                                                           for="password_old">
-                                                        <strong>Текущий пароль</strong>
-                                                    </label>
-                                                </div>
-                                                <div class="col">
-                                                    <label class="col-form-label text-dark" for="password">
-                                                        <strong>Новый пароль</strong>
-                                                    </label>
-                                                </div>
-                                                <div class="col">
-                                                    <label class="col-form-label text-dark" for="password_repeat">
-                                                        <strong>Повторите новый пароль</strong>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-10px">
-                                                <div class="col">
-                                                    <input class="form-control" type="password" id="password_old"
-                                                           name="passwordOld">
-                                                </div>
-                                                <div class="col">
-                                                    <input class="form-control" type="password" id="password"
+                                                    <input class="form-control" type="password"
+                                                           placeholder="Введите новый пароль"
                                                            name="password">
                                                 </div>
-                                                <div class="col">
-                                                    <input class="form-control" type="password" id="password_repeat"
-                                                           name="passwordRepeat">
+                                                <div class="col-auto">
+                                                    <button class="btn btn-outline-primary" type="submit">
+                                                        Изменить пароль
+                                                    </button>
                                                 </div>
-                                            </div>
-                                            <label class="form-label text-dark">
-                                                <strong>*Для изменения данных введите текущий пароль</strong>
-                                            </label>
-                                            <div class="mb-3">
-                                                <button class="btn btn-outline-primary" type="submit">
-                                                    Сохранить изменения
-                                                </button>
                                             </div>
                                         </form>
                                     </div>
